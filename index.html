@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Filter</title>
+  </head>
+  <style>
+    table,
+    th,
+    td {
+      border: 2px solid black;
+    }
+
+    input {
+      margin-bottom: 10px;
+    }
+  </style>
+  <body>
+    <!-- ## START HERE ##-->
+    <input type="text" name="search" id="search" placeholder="Search..." />
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Phone</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>John doe</td>
+          <td>10</td>
+          <td>0987654321</td>
+        </tr>
+        <tr>
+          <td>Jane Doe</td>
+          <td>34</td>
+          <td>1234567890</td>
+        </tr>
+        <tr>
+          <td>Bart</td>
+          <td>44</td>
+          <td>1234509879</td>
+        </tr>
+      </tbody>
+    </table>
+    <script>
+      const searchInput = document.getElementById("search");
+      const rows = document.querySelectorAll("tbody tr");
+      console.log(rows);
+      searchInput.addEventListener("keyup", function (event) {
+        const q = event.target.value.toLowerCase();
+        rows.forEach((row) => {
+          row.querySelector("td").textContent.toLowerCase().startsWith(q)
+            ? (row.style.display = "table-row")
+            : (row.style.display = "none");
+        });
+      });
+    </script>
+  </body>
+</html>
